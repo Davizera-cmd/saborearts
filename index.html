@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="A Sabor & Art's Sorveteria oferece açaí, sorvetes e delícias em Palhoça. Peça online ou visite nossas lojas no Aririu, Praia de Fora e Lago.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sabor & Art's Sorveteria | Açaí e Sorvetes em Palhoça</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="icon" href="icon.png" type="image/x-icon">
+
+
+    <style>
+     * {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* --- Reset Básico e Configurações Globais --- */
+        :root {
+            --cor-principal: #A02C2C;
+            /* Vermelho/Vinho do logo */
+            --cor-secundaria: #4a1e9e;
+            /* Roxo do Açaí */
+            --cor-fundo: #FFF8F0;
+            /* Creme claro/Branco-gelo */
+            --cor-texto: #333333;
+            --cor-destaque: #E8A87C;
+            /* Tom de pêssego/laranja claro */
+            --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.1);
+            --fonte-titulo: 'Poppins', sans-serif;
+            --fonte-corpo: 'Poppins', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--fonte-corpo);
+            background-color: var(--cor-fundo);
+            color: var(--cor-texto);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: var(--fonte-titulo);
+            color: var(--cor-principal);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+        }
+
+        /* --- Header --- */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        .header .logo img {
+            height: 80px;
+            width: auto;
+            transition: transform 0.3s ease;
+            border-radius: 50%;
+        }
+
+        .header .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--cor-destaque);
+        }
+
+        /* --- Seção Hero --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('banner.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            background-color: var(--cor-principal);
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: var(--sombra-suave);
+        }
+
+        .cta-button:hover {
+            background-color: #7c2020;
+            transform: translateY(-3px);
+        }
+
+        /* --- Seção Produtos --- */
+        #produtos {
+            padding-top: 60px;
+        }
+
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .produto-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--sombra-suave);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .produto-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .produto-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .produto-card-content {
+            padding: 25px;
+        }
+
+        .produto-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- Seção Lojas --- */
+        #lojas {
+            padding-top: 60px;
+        }
+
+        .lojas-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .loja-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: var(--sombra-suave);
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+        }
+
+        .loja-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .loja-card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .loja-card h3 {
+            font-size: 1.5rem;
+            text-align: left;
+        }
+
+        .loja-card p {
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .loja-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .loja-button {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 600;
+            transition: all .3s ease;
+        }
+
+        .btn-delivery {
+            background-color: var(--cor-principal);
+            color: white;
+        }
+
+        .btn-delivery:hover {
+            background-color: #7c2020;
+        }
+
+        .btn-mapa {
+            background-color: #f0f0f0;
+            color: var(--cor-texto);
+        }
+
+        .btn-mapa:hover {
+            background-color: #ddd;
+        }
+
+        /* --- Seção Sobre --- */
+        #sobre {
+            padding-top: 60px;
+        }
+
+        .sobre-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            text-align: center;
+        }
+
+        .sobre-texto,
+        .sobre-img {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .sobre-texto h2 {
+            text-align: left;
+        }
+
+        .sobre-texto p {
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .sobre-img img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: var(--sombra-suave);
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: var(--cor-texto);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+        }
+
+        .footer h3 {
+            color: white;
+        }
+
+        .social-links a {
+            color: white;
+            margin: 0 3px;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color .3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--cor-destaque);
+        }
+
+        .footer p {
+            margin-top: 20px;
+            font-size: .9rem;
+            opacity: .7;
+        }
+
+        /* --- Menu Hambúrguer e Mobile --- */
+        .hamburger-menu {
+            display: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger-menu .bar {
+            width: 28px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
+            border-radius: 2px;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 70%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: var(--cor-principal);
+            z-index: 1000;
+            transition: right 0.4s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 60px;
+        }
+
+        .mobile-nav a {
+            display: flex;
+            /* Alinha ícone e texto */
+            align-items: center;
+            /* Centraliza verticalmente */
+            gap: 15px;
+            /* Espaço entre ícone e texto */
+            color: white;
+            text-decoration: none;
+            font-size: 1.3rem;
+            /* Ajustado para caber melhor */
+            padding: 20px 25px;
+            text-align: left;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .mobile-nav a:hover {
+            background-color: #7c2020;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: rotate(-45deg) translate(-6px, 6px);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: rotate(45deg) translate(-6px, -7px);
+        }
+
+
+        /* --- Responsividade --- */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+
+            .header {
+                justify-content: space-between;
+                background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+                padding-top: 10px;
+                padding-right: 20px;
+                padding-left: 20px;
+            }
+
+            .header .logo img {
+                height: 60px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .sobre-container {
+                flex-direction: column-reverse;
+            }
+
+            .sobre-texto h2,
+            .sobre-texto p {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo da Sabor & Art's Sorveteria">
+        </div>
+        <nav class="nav-menu">
+            <a href="#produtos">Nossos Produtos</a>
+            <a href="#lojas">Nossas Lojas</a>
+            <a href="#sobre">Nossa História</a>
+        </nav>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav">
+        <a href="#produtos">
+            <span class="material-symbols-outlined">icecream</span>
+            Nossos Produtos
+        </a>
+        <a href="#lojas">
+            <span class="material-symbols-outlined">storefront</span>
+            Nossas Lojas
+        </a>
+        <a href="#sobre">
+            <span class="material-symbols-outlined">auto_stories</span>
+            Nossa História
+        </a>
+    </nav>
+
+
+    <main>
+        <section class="hero">
+            <h1>Você vai se surpreender com esse sabor!</h1>
+            <p>Açaí, sorvetes e delícias feitas com os melhores ingredientes. Peça agora ou encontre a loja
+                mais próxima.</p>
+            <a href="#lojas" class="cta-button">Ver no Mapa ou Pedir online</a>
+        </section>
+
+        <section id="produtos" class="container">
+            <h2>Nossos Carros-Chefes</h2>
+            <div class="produtos-grid">
+                <div class="produto-card">
+                    <img src="copo.jpg" alt="Copo de Açaí Turbinado com Frutas"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Imagem+N%C3%A3o+Encontrada';">
+                    <div class="produto-card-content">
+                        <h3>Copo de Açaí Turbinado</h3>
+                        <p>Monte seu copo do seu jeito! Escolha os cremes, frutas e acompanhamentos que você mais ama.
+                        </p>
+                    </div>
+                </div>
+                <div class="produto-card">
+                    <img src="roleta.jpg" alt="Roleta de Açaí"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Imagem+N%C3%A3o+Encontrada';">
+                    <div class="produto-card-content">
+                        <h3>Roleta de Açaí</h3>
+                        <p>Perfeita para compartilhar com a galera! Uma explosão de sabores com diversos
+                            acompanhamentos.</p>
+                    </div>
+                </div>
+                <div class="produto-card">
+                    <img src="barca.jpg" alt="Barca de Açaí"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x400/cccccc/ffffff?text=Imagem+N%C3%A3o+Encontrada';">
+                    <div class="produto-card-content">
+                        <h3>Barca de Açaí Gigante</h3>
+                        <p>A experiência definitiva para os amantes de açaí. Uma viagem de sabor para toda a família e
+                            amigos.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="lojas" class="container">
+            <h2>Onde a Mágica Acontece</h2>
+            <div class="lojas-container">
+                <div class="loja-card">
+                    <img src="https://placehold.co/400x300/A02C2C/ffffff?text=Fachada+Loja+Aririu" alt="Fachada da Loja Aririu"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/ffffff?text=Imagem+N%C3%A3o+Encontrada';">
+                    <div class="loja-card-content">
+                        <h3>Loja Aririu</h3>
+                        <p>Avenida bom Jesus de Nazaré, 300<br>Horário: 14h - 23h</p>
+                        <div class="loja-buttons">
+                            <a href="https://pedido.anota.ai/loja/sabor&artssorveteriaeacaiteriaii?f=msa" class="loja-button btn-delivery">Pedir Delivery</a>
+                            <a href="https://www.google.com/maps/place/Sabor+%26+Art's+Sorveteria+e+A%C3%A7aiteria+Ariri%C3%BA/@-27.6668782,-48.6789501,17z/data=!3m2!4b1!5s0x95273459b4776689:0xb6fb6e8a56e95d76!4m6!3m5!1s0x9527350c5f78a393:0x55c9bcae88c819ef!8m2!3d-27.666883!4d-48.6763752!16s%2Fg%2F11ptwvqn12?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" class="loja-button btn-mapa">Ver no Mapa</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="loja-card">
+                    <img src="https://placehold.co/400x300/A02C2C/ffffff?text=Fachada+Praia+de+Fora" alt="Fachada da Loja Praia de Fora"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/ffffff?text=Imagem+N%C3%A3o+Encontrada';">
+                    <div class="loja-card-content">
+                        <h3>Loja Praia de Fora</h3>
+                        <p>Rua Arcanjo Cândido da Silva, 413<br>Horário: 13h - 21h</p>
+                        <div class="loja-buttons">
+                            <a href="https://pedido.anota.ai/loja/sabor&arts?f=msa" class="loja-button btn-delivery">Pedir Delivery</a>
+                            <a href="https://www.google.com/maps/place/Sabor+%26+Art's+Sorveteria+e+A%C3%A7aiteria+Praia+de+fora/@-27.7225443,-48.6391605,21z/data=!4m6!3m5!1s0x9527337d73be781d:0x4407361a23e25860!8m2!3d-27.7224205!4d-48.6392041!16s%2Fg%2F11h8jmn5nl?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" class="loja-button btn-mapa">Ver no Mapa</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="loja-card">
+                    <img src="https://placehold.co/400x300/A02C2C/ffffff?text=Fachada+Loja+do+Lago" alt="Fachada da Loja do Lago"
+                        onerror="this.onerror=null;this.src='https://placehold.co/400x300/cccccc/ffffff?text=Imagem+N%C3%A3o+Encontrada';">
+                    <div class="loja-card-content">
+                        <h3>Loja do Lago</h3>
+                        <p>Rua dos Lagos, 129<br>Horário: 00h - 00h (Horário em breve)</p>
+                        <div class="loja-buttons">
+                            <a href="tel:+5548984592200" class="loja-button btn-delivery">Pedir Delivery</a>
+                            <a href="https://www.google.com/maps/place/Sabor+%26+Art's+Sorveteria+do+lago/@-27.6733043,-48.6897531,17z/data=!3m1!4b1!4m6!3m5!1s0x952735b40551e24b:0x4750e7cee504b1fe!8m2!3d-27.6733091!4d-48.6871782!16s%2Fg%2F11t6tc69jy?entry=ttu&g_ep=EgoyMDI1MDYzMC4wIKXMDSoASAFQAw%3D%3D" class="loja-button btn-mapa">Ver no Mapa</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre" class="container">
+            <div class="sobre-container">
+                <div class="sobre-texto">
+                    <h2>Sorveteria: Nossa Paixão</h2>
+                    <p>Um espaço para contar a trajetória única da Sabor & Art's.</p>
+                </div>
+                <div class="sobre-img">
+                    <img src="https://placehold.co/500x500/E8A87C/ffffff?text=Equipe+ou+Processo+Artesanal" alt="Equipe da Sabor & Art's"
+                        onerror="this.onerror=null;this.src='https://placehold.co/500x500/cccccc/ffffff?text=Imagem+N%C3%A3o+Encontrada';">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <h3>Sabor & Art's Sorveteria</h3>
+        <p>Conecte-se conosco nas redes sociais!</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/sorveteriasaborearts" aria-label="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path
+                        d="M7.8,2H16.2C19.4,2 22,4.6 22,7.8V16.2A5.8,5.8 0 0,1 16.2,22H7.8C4.6,22 2,19.4 2,16.2V7.8A5.8,5.8 0 0,1 7.8,2M7.6,4A3.6,3.6 0 0,0 4,7.6V16.4C4,18.39 5.61,20 7.6,20H16.4A3.6,3.6 0 0,0 20,16.4V7.6C20,5.61 18.39,4 16.4,4H7.6M17.25,5.5A1.25,1.25 0 0,1 18.5,6.75A1.25,1.25 0 0,1 17.25,8A1.25,1.25 0 0,1 16,6.75A1.25,1.25 0 0,1 17.25,5.5M12,7A5,5 0 0,1 17,12A5,5 0 0,1 12,17A5,5 0 0,1 7,12A5,5 0 0,1 12,7M12,9A3,3 0 0,0 9,12A3,3 0 0,0 12,15A3,3 0 0,0 15,12A3,3 0 0,0 12,9Z">
+                    </path>
+                </svg>
+            </a>
+            <a href="https://www.facebook.com/sorveteriasaborearts/" aria-label="Facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                </svg>
+            </a>
+        </div>
+        <p>&copy; 2025 Sabor & Art's Sorveteria. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const hamburger = document.querySelector('.hamburger-menu');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const navLinks = document.querySelectorAll('.mobile-nav a');
+
+        // Abre e fecha o menu ao clicar no ícone
+        hamburger.addEventListener('mousedown', (event) => {
+            event.stopPropagation(); // Impede que o clique se propague para o document
+            toggleMenu();
+        });
+
+        // Função para abrir/fechar o menu
+        function toggleMenu() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+        }
+
+        // Fecha o menu quando um link é clicado
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mobileNav.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Fecha o menu ao clicar fora dele
+        document.addEventListener('click', (event) => {
+    const isClickInsideMenu = mobileNav.contains(event.target);
+    // Adicionamos uma nova verificação: o clique foi no ícone do hambúrguer?
+    const isClickOnHamburger = hamburger.contains(event.target);
+
+    // Agora, só fechamos se o menu estiver ativo E o clique for fora do menu E também não for no ícone.
+    if (mobileNav.classList.contains('active') && !isClickInsideMenu && !isClickOnHamburger) {
+        toggleMenu();
+    }
+});
+
+    </script>
+
+</body>
+
+</html>
